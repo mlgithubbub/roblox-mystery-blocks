@@ -1,0 +1,11 @@
+local part = script.Parent
+local lastTouched = 0
+local hasBeenDamaged = false
+
+part.Touched:Connect(function(hit)
+	local humanoid = hit.Parent:FindFirstChild("Humanoid")
+	if humanoid and not hasBeenDamaged then
+		hasBeenDamaged = true
+		hit.Parent.Humanoid.Health = hit.Parent.Humanoid.Health - 33
+	end
+end)
