@@ -1,0 +1,18 @@
+local part = script.Parent
+local isNewPartDone = false
+
+part.Touched:Connect(function(hit)
+	local humanoid = hit.Parent:FindFirstChild("Humanoid")
+	if humanoid and not isNewPartDone then
+		local newPart = Instance.new("Part")
+		newPart.Parent = workspace
+		newPart.Shape = Enum.PartType.Cylinder
+		newPart.Size = Vector3.new(3,3,3)
+		newPart.BrickColor = BrickColor.Random()
+		newPart.Material = Enum.Material.SmoothPlastic
+		newPart.Position = part.Position + Vector3.new(0, newPart.Size.Y / 2 + 1, 0)
+		newPart.Anchored = true
+		isNewPartDone = true
+	end
+end)
+
