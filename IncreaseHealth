@@ -1,0 +1,14 @@
+local part = script.Parent
+local lastTouched = 0
+
+part.Touched:Connect(function(hit)
+	local humanoid = hit.Parent:FindFirstChild("Humanoid")
+	if humanoid and tick() - lastTouched > 1 then 
+		lastTouched = tick()
+		part.Size = part.Size * 1.2
+	end
+end)
+
+
+
+
