@@ -1,0 +1,12 @@
+local part = script.Parent
+
+part.Touched:Connect(function(hit)
+	local humanoid = hit.Parent:FindFirstChild("Humanoid")
+	if humanoid then
+		hit.Parent:MoveTo(script.Parent.To.Position + Vector3.new(0,10,0))
+		local sparkles = Instance.new("Sparkles")
+		sparkles.Parent = script.Parent.To
+		wait(3)
+		sparkles:Destroy()
+	end
+end)
